@@ -1,3 +1,4 @@
+#' @include utilsTradeSeq.R
 
 .plotSmoothers <- function(model, nPoints = 100, lwd = 2, size = 2/3,
                           xlab = "Pseudotime",
@@ -314,7 +315,7 @@ setOldClass("gam")
 #' running \code{fitGAM}, or the specific GAM model for the corresponding gene,
 #' if working with the list output of \code{tradeSeq}.
 #' @param counts The matrix of gene expression counts.
-#' @param gene Gene name or row in count matrix of gene to plot. 
+#' @param gene Gene name or row in count matrix of gene to plot.
 #' @param nPoints The number of points used to extrapolate the fit.
 #' Defaults to 100.
 #' @param lwd Line width of the smoother. Passed to \code{\link{geom_line}}.

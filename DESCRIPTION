@@ -14,3 +14,9 @@ Imports:
     viridis,
     mgcv,
     SingleCellExperiment
+RoxygenNote: 7.0.2
+Collate: 
+    'AllGenerics.R'
+    'utilsTradeSeq.R'
+    'plotGeneCount.R'
+    'plotSmoothers.R'

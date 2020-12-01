@@ -1,3 +1,5 @@
+#' @include utilsTradeSeq.R
+
 .plotGeneCount <- function(curve, counts = NULL, gene = NULL, clusters = NULL,
                            models = NULL, title = NULL){
   rd <- reducedDim(curve)
@@ -18,7 +20,7 @@
     theme_classic() +
     labs(col = title) +
     scales
-  
+
   # Adding the curves
   for (i in seq_along(slingCurves(curve))) {
     curve_i <- slingCurves(curve)[[i]]
@@ -26,7 +28,7 @@
     colnames(curve_i) <- c("dim1", "dim2")
     p <- p + geom_path(data = as.data.frame(curve_i), col = "black", size = 1)
   }
-  
+
   # Adding the knots
   nCurves <- length(slingCurves(curve))
   if (!is.null(models)) {
@@ -66,13 +68,13 @@
 #' @param curve One of three
 #' \itemize{
 #'   \item A \code{\link{SlingshotDataSet}} object. The output from trajectory inference
-#' using Slingshot. 
+#' using Slingshot.
 #'  \item A \code{\link{SingleCellExperiment}} object. The output from trajectory inference
-#' using Slingshot. 
+#' using Slingshot.
 #' \item A \code{CellDataset} object.
 #' }
 #' @param counts The count matrix, genes in rows and cells in columns. Only needed
-#' if the input is of the type \code{\link{SlingshotDataSet}} and the \code{gene} 
+#' if the input is of the type \code{\link{SlingshotDataSet}} and the \code{gene}
 #' argument is not \code{NULL}.
 #' @param gene The name of gene for which you want to plot the count or the row
 #'  number of that gene in the count matrix. Alternatively, one can specify
@@ -80,11 +82,11 @@
 #' @param clusters The assignation of each cell to a cluster. Used to color the
 #'  plot. Either \code{clusters} or \code{gene} and \code{counts} must be supplied.
 #' @param models The fitted GAMs, typically the output from
-#'  \code{\link{fitGAM}}. Used to display the knots. Does not work with a 
+#'  \code{\link{fitGAM}}. Used to display the knots. Does not work with a
 #'  \code{CellDataset} object as input.
 #' @param title Title for the plot.
 #' @details If both \code{gene} and \code{clusters} arguments are supplied, the
-#'  plot will be colored according to gene count level. If none are provided, the 
+#'  plot will be colored according to gene count level. If none are provided, the
 #'  function will fail. When a \code{CellDataset} object is provided as input,
 #'  the function relies on the \code{\link{plot_cell_trajectory}} function
 #' @return A \code{\link{ggplot}} object
@@ -111,11 +113,11 @@
 #' @rdname plotGeneCount
 #' @export
 setMethod(f = "plotGeneCount", signature = c(curve = "SlingshotDataSet"),
-          definition = function(curve, 
-                                counts = NULL, 
-                                gene = NULL, 
+          definition = function(curve,
+                                counts = NULL,
+                                gene = NULL,
                                 clusters = NULL,
-                                models = NULL, 
+                                models = NULL,
                                 title = NULL){
     if (is.null(gene) & is.null(clusters)) {
       stop("Either gene and counts, or clusters argument must be supplied")
@@ -123,7 +125,7 @@ setMethod(f = "plotGeneCount", signature = c(curve = "SlingshotDataSet"),
     if (is.null(counts) & is.null(clusters)) {
       stop("Either gene and counts, or clusters argument must be supplied")
     }
-    
+
     p <- .plotGeneCount(curve = curve,
                         counts = counts,
                         gene = gene,
@@ -138,11 +140,11 @@ setMethod(f = "plotGeneCount", signature = c(curve = "SlingshotDataSet"),
 #' @importFrom SingleCellExperiment counts
 #' @importFrom slingshot SlingshotDataSet
 setMethod(f = "plotGeneCount", signature = c(curve = "SingleCellExperiment"),
-          definition = function(curve, 
-                                counts = NULL, 
-                                gene = NULL, 
+          definition = function(curve,
+                                counts = NULL,
+                                gene = NULL,
                                 clusters = NULL,
-                                models = NULL, 
+                                models = NULL,
                                 title = NULL){
     if (!is.null(counts)) {
       message(paste0("The count argument will be ignored if the curve argument",
@@ -162,11 +164,11 @@ setMethod(f = "plotGeneCount", signature = c(curve = "SingleCellExperiment"),
 #' @import monocle Biobase
 #' @importFrom ggplot2 ggtitle
 setMethod(f = "plotGeneCount", signature = c(curve = "CellDataSet"),
-          definition = function(curve, 
-                                counts = NULL, 
-                                gene = NULL, 
+          definition = function(curve,
+                                counts = NULL,
+                                gene = NULL,
                                 clusters = NULL,
-                                models = NULL, 
+                                models = NULL,
                                 title = NULL){
     if (!is.null(counts)) {
       message(paste0("The count argument will be ignored if the curve argument",
@@ -179,13 +181,13 @@ setMethod(f = "plotGeneCount", signature = c(curve = "CellDataSet"),
     if (is.null(gene) & is.null(clusters)) {
       stop("Either gene or clusters argument must be supplied")
     }
-            
+
     if (is.null(gene)) {
       Biobase::pData(curve)$clusters <- clusters
-      p <- monocle::plot_cell_trajectory(curve, color_by = clusters)  
+      p <- monocle::plot_cell_trajectory(curve, color_by = clusters)
     } else {
       p <- monocle::plot_cell_trajectory(curve, use_color_gradient = TRUE,
-                                         markers_linear = TRUE, markers = gene)  
+                                         markers_linear = TRUE, markers = gene)
     }
     p <- p + ggplot2::ggtitle(label = title)
     return(p)
