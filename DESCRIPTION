@@ -13,10 +13,12 @@ Imports:
     ggplot2,
     viridis,
     mgcv,
-    SingleCellExperiment
-RoxygenNote: 7.0.2
+    SingleCellExperiment,
+    slingshot
+RoxygenNote: 7.1.1
 Collate: 
     'AllGenerics.R'
     'utilsTradeSeq.R'
     'plotGeneCount.R'
     'plotSmoothers.R'
+    'plot_SlingshotDataSet.R'
