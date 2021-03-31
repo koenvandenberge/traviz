@@ -1,0 +1,134 @@
+---
+title: 'Using ggplot2 with slingshot'
+author: "Hector Roux de Bézieux and Kelly Street"
+bibliography: traffic.bib
+date: "31/03/2021"
+output: 
+  rmarkdown::html_document:
+    toc: true
+    toc_depth: 3
+vignette: >
+  %\VignetteIndexEntry{ggplot2 + slingshot}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+```{r, echo = FALSE}
+library(knitr)
+```
+
+# Introduction
+
+`Slingshot`[@Street2018a] is a popular and powerful trajectory inference tool, available from bioconductor. While it only provides default plotting functions in base R, the package also offer conversion functions that can be used to generate plots with `ggplot2`[@ggplot2]. 
+
+We will assume that you are both familiar with `slingshot` and `ggplot2`. Otherwise, please refere to the respective packages' vignettes.
+
+# Running slingshots
+We run `slingshot` on the provided example
+
+```{r}
+# Running slinghsot
+suppressPackageStartupMessages(library(slingshot))
+data("slingshotExample")
+rd <- slingshotExample$rd
+colnames(rd) <- c("Dim1", "Dim2")
+cl <- slingshotExample$cl
+df <- data.frame(rd, "cl" = as.character(cl))
+sds <- slingshot(rd, cl)
+```
+
+We can then visualize the samples in reduced dimension.
+
+```{r}
+suppressPackageStartupMessages(library(ggplot2))
+suppressPackageStartupMessages(library(dplyr))
+# Plotting the results
+p <- ggplot(df, aes(x = Dim1, y = Dim2)) +
+  geom_point(aes(fill = cl), col = "grey70", shape = 21) + 
+  theme_classic()
+p
+```
+
+# Adding the curves to a ggplot2 object
+
+Then, we can add the curves. We can extract the needed information using the accessory functions. This can be turned into *tidy* data.frames that interact nicely with `ggplot2` by setting the `as.df` argument to `TRUE`. 
+
+```{r}
+curves <- slingCurves(sds, as.df = TRUE)
+p + geom_path(data = curves %>% arrange(Order),
+              aes(group = Lineage)) 
+```
+
+We can do all the usual ggplot2 operations
+
+```{r}
+p + geom_path(data = curves %>% arrange(Order),
+              aes(group = Lineage), size = 1.5) 
+```
+
+```{r}
+p + geom_path(data = curves %>% arrange(Order),
+              aes(group = Lineage, col = as.character(Lineage)), size = 1.5) 
+```
+
+# Showing the minimum spanning tree
+
+`slingshot` relies on a minimum spanning tree to build the lineages. We can extract the information via:
+
+```{r}
+mst <- slingMST(sds, as.df = TRUE)
+```
+
+We can then plot the nodes of the graph
+
+```{r}
+p + geom_point(data = mst, size = 4)
+```
+
+And then add the edges
+
+```{r}
+p + geom_point(data = mst, size = 4) +
+  geom_path(data = mst %>% arrange(Order), aes(group = Lineage), size = 2)
+```
+
+# Building on existing tools
+
+`ggplot2` objects are very versatile. It is therefore quite easy to add the slingshot information to the output of a function that returns such an object. Here we demonstrate with the `plotReducedDim` function from the `scater` package[@scater].
+
+```{r}
+suppressPackageStartupMessages(library(scater))
+suppressPackageStartupMessages(library(SingleCellExperiment))
+sce <- SingleCellExperiment(assays = list(counts = t(rd)),
+                            colData = df)
+reducedDim(sce, "Dim") <- rd
+p <- plotReducedDim(sce, dimred = "Dim", colour_by = "cl")
+p
+```
+
+Then, it is quite straightforward to add the curves. We just need to rename the components as X and Y
+
+```{r}
+curves <- slingCurves(sds, as.df = TRUE) %>%
+  dplyr::rename("X" = "Dim1", "Y" = "Dim2")
+p + geom_path(data = curves %>% arrange(Order),
+              aes(group = Lineage)) 
+```
+
+Similarly for the MST:
+
+```{r}
+mst <- slingMST(sds, as.df = TRUE) %>%
+  dplyr::rename("X" = "Dim1", "Y" = "Dim2")
+p + geom_point(data = mst, size = 4) +
+  geom_path(data = mst %>% arrange(Order), aes(group = Lineage), size = 2)
+```
+
+If you have trouble figuring out how to adapt this to other functions, feel free to open an issue on the [traffic repo](https://github.com/koenvandenberge/traffic).
+
+# Session Info
+
+```{r}
+sessionInfo()
+```
+
+# References

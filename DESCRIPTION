@@ -2,11 +2,13 @@ Package: traffic
 Type: Package
 Title: Trajectory functions for visualization and interpretation.
 Version: 0.1.0
-Author: Who wrote it
-Maintainer: The package maintainer <yourself@somewhere.net>
-Description: More about what it does (maybe more than one line)
-    Use four spaces when indenting paragraphs within the Description.
-License: What license is it under?
+Authors@R: c(person("Hector", "Roux de Bezieux", role = c("aut", "ctb"),
+		person("Koen", "Van den Berge", role = c("aut" , "cre"),
+                     email = "koen.vandenberge@ugent.be"),
+		person("Kelly","Street", role = c("aut", "ctb")))
+Description: traffic provides a suit of functions to plot trajectory related objects from
+	     bioconductor
+License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
 Imports: 
@@ -22,3 +24,6 @@ Collate:
     'plotGeneCount.R'
     'plotSmoothers.R'
     'plot_SlingshotDataSet.R'
+Suggests: 
+    scater,
+    dplyr
