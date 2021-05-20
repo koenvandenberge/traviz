@@ -20,7 +20,9 @@ Imports:
 RoxygenNote: 7.1.1
 Collate: 
     'AllGenerics.R'
+    'data.R'
     'utilsTradeSeq.R'
+    'plotExpression.R'
     'plotGeneCount.R'
     'plotSmoothers.R'
     'plot_SlingshotDataSet.R'
