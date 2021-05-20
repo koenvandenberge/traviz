@@ -26,4 +26,7 @@ Collate:
     'plot_SlingshotDataSet.R'
 Suggests: 
     scater,
-    dplyr
+    dplyr,
+    testthat (>= 3.0.0),
+    covr
+Config/testthat/edition: 3
