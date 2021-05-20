@@ -6,8 +6,8 @@ Authors@R: c(
 	person("Hector", "Roux de Bezieux", role = c("aut", "ctb")),
 	person("Kelly", "Street", role = c("aut", "ctb")),
 	person("Koen", "Van den Berge", role = c("aut" , "cre"), email = "koen.vandenberge@ugent.be"))
-Description: traffic provides a suit of functions to plot trajectory related objects from
-	     bioconductor
+Description: traffic provides a suite of functions to plot trajectory related objects from
+	     Bioconductor packages.
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
@@ -30,3 +30,5 @@ Suggests:
     testthat (>= 3.0.0),
     covr
 Config/testthat/edition: 3
+Depends: 
+    R (>= 2.10)
