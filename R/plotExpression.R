@@ -61,3 +61,28 @@ setMethod(f = "plotExpression",
   }
   return(p1)
 })
+
+
+setMethod(f = "plotExpression",
+          signature = c(counts = "matrix",
+                        sds = "PseudotimeOrdering",
+                        gene = "character"),
+          definition = function(counts,
+                                sds,
+                                gene,
+                                type = "loess",
+                                span = 0.75,
+                                alpha = 1,
+                                lwd=1,
+                                size = 2/3){
+
+            p1 <- plotExpression(counts = counts,
+                           sds = as.SlingshotDataSet(sds),
+                           gene = gene,
+                           type = type,
+                           span = span,
+                           alpha = alpha,
+                           lwd = lwd,
+                           size =size)
+            return(p1)
+})
