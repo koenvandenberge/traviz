@@ -339,7 +339,6 @@ setOldClass("gam")
 #' @import ggplot2
 #' @import mgcv
 #' @import viridis
-#' @importFrom methods is
 #' @rdname plotSmoothers
 #' @export
 setMethod(f = "plotSmoothers",

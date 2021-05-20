@@ -139,6 +139,7 @@ setMethod(f = "plotGeneCount", signature = c(curve = "SlingshotDataSet"),
 #' @rdname plotGeneCount
 #' @importFrom SingleCellExperiment counts
 #' @importFrom slingshot SlingshotDataSet
+#' @export
 setMethod(f = "plotGeneCount", signature = c(curve = "SingleCellExperiment"),
           definition = function(curve,
                                 counts = NULL,
@@ -161,8 +162,10 @@ setMethod(f = "plotGeneCount", signature = c(curve = "SingleCellExperiment"),
 )
 
 #' @rdname plotGeneCount
-#' @import monocle Biobase
+#' @import monocle
+#' @import Biobase
 #' @importFrom ggplot2 ggtitle
+#' @export
 setMethod(f = "plotGeneCount", signature = c(curve = "CellDataSet"),
           definition = function(curve,
                                 counts = NULL,
