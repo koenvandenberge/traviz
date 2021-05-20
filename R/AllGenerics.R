@@ -23,3 +23,19 @@ setGeneric(
     standardGeneric("plotGeneCount")
   }
 )
+
+
+#' @export
+#' @title Plot gene expression along pseudotime.
+#' @description Plot gene expression along pseudotime.
+#' @name plotExpression
+#' @param ... parameters including:
+setGeneric(
+  name = "plotExpression",
+  def = function(counts,
+                 sds,
+                 gene,
+                 ...) {
+    standardGeneric("plotExpression")
+  }
+)
