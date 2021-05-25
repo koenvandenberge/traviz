@@ -16,7 +16,7 @@ Imports:
     viridis,
     mgcv,
     SingleCellExperiment,
-    slingshot (>= 1.9),
+    slingshot,
     princurve,
     Biobase,
     methods,
