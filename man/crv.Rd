@@ -8,7 +8,7 @@
 An object of class \code{SlingshotDataSet} of length 1.
 }
 \usage{
-data(crv)
+data("crv", package = "traffic")
 }
 \description{
 This dataset contains the Slingshot trajectory from the data described in

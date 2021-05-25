@@ -61,7 +61,7 @@ When \code{type} is not specified, the function will first check the
 \examples{
 \dontrun{
 library(rgl)
-data("slingshotExample")
+data("slingshotExample", package="slingshot")
 rd <- slingshotExample$rd
 cl <- slingshotExample$cl
 rd <- cbind(rd, rnorm(nrow(rd)))

@@ -8,7 +8,7 @@
 An object of class \code{standardGeneric} of length 1.
 }
 \usage{
-data(counts)
+data("counts", package = "traffic")
 }
 \description{
 This object contains the gene expression counts from the data described in

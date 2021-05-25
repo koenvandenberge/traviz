@@ -34,6 +34,7 @@ plotSmoothers(models, ...)
   alpha = 1,
   sample = 1,
   pointCol = NULL,
+  curvesCols = NULL,
   plotLineages = TRUE
 )
 }
@@ -71,6 +72,12 @@ are too many so that it can plot faster.}
 length 1, denoting a variable in the \code{colData(models)} to color cells by,
 or a vector of length equal to the number of cells.}
 
+\item{curvesCols}{Plotting colors for each curve Should be a list of colors
+of the exact same length as the number of curves, i.e. the number of lineages
+(if there is no conditions) or the number of lineages by the number of conditions.
+In the second case, the colors are grouped by condition (lineage 1 - condition 1,
+lineage 1 - condition 2,...).}
+
 \item{plotLineages}{Logical, should the mean smoothers for each lineage
 be plotted?}
 }
@@ -81,6 +88,20 @@ A \code{\link{ggplot}} object
 Plot the smoothers estimated by \code{tradeSeq}.
 }
 \examples{
-data(gamList, package = "tradeSeq")
-plotSmoothers(gamList[[4]])
+set.seed(8)
+data(crv, package="tradeSeq")
+data(countMatrix, package="tradeSeq")
+counts <- as.matrix(countMatrix)
+sce <- fitGAM(counts = counts,
+                  sds = crv,
+                  nknots = 5)
+plotSmoothers(sce, counts, rownames(counts)[1])
+# Show only first lineage curve
+curvesCols <- c("#440154FF", "transparent")
+plotSmoothers(sce, counts, rownames(counts)[1], curvesCols = curvesCols,
+  border = FALSE)
+# Show only first curve and cells assigned to first lineage
+plotSmoothers(sce, counts, rownames(counts)[1], curvesCols = curvesCols,
+  border = FALSE) +
+  ggplot2::scale_color_manual(values = curvesCols)
 }
