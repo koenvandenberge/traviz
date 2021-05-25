@@ -35,6 +35,7 @@
 #' @return returns \code{NULL}.
 #'
 #' @examples
+#' library(slingshot)
 #' data("slingshotExample", package="slingshot")
 #' rd <- slingshotExample$rd
 #' cl <- slingshotExample$cl
@@ -241,6 +242,7 @@ setMethod(
 #' @examples
 #' \dontrun{
 #' library(rgl)
+#' library(slingshot)
 #' data("slingshotExample", package="slingshot")
 #' rd <- slingshotExample$rd
 #' cl <- slingshotExample$cl
