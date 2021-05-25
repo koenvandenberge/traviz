@@ -35,7 +35,7 @@
 #' @return returns \code{NULL}.
 #'
 #' @examples
-#' data("slingshotExample")
+#' data("slingshotExample", package="slingshot")
 #' rd <- slingshotExample$rd
 #' cl <- slingshotExample$cl
 #' sds <- slingshot(rd, cl, start.clus = "1")
@@ -80,21 +80,21 @@ setMethod(
                 stop('Unrecognized type argument.')
             }
         }
-        
+
         if(type %in% c('lineages','both')){
             lineages <- TRUE
         }
         if(type %in% c('curves','both')){
             curves <- TRUE
         }
-        
+
         if(lineages & (length(slingLineages(x))==0)){
             stop('No lineages detected.')
         }
         if(curves & (length(slingCurves(x))==0)){
             stop('No curves detected.')
         }
-        
+
         if(is.null(linInd)){
             linInd <- seq_along(slingLineages(x))
         }else{
@@ -113,7 +113,7 @@ setMethod(
                 }
             }
         }
-        
+
         if(lineages){
             X <- reducedDim(x)
             clusterLabels <- slingClusterLabels(x)
@@ -131,7 +131,7 @@ setMethod(
             linC <- slingParams(x)
             clus2include <- unique(unlist(slingLineages(x)[linInd]))
         }
-        
+
         if(!add){
             xs <- NULL
             ys <- NULL
@@ -151,7 +151,7 @@ setMethod(
                  xlab = colnames(reducedDim(x))[dims[1]],
                  ylab = colnames(reducedDim(x))[dims[2]])
         }
-        
+
         if(lineages){
             for(i in seq_len(nclus-1)){
                 for(j in seq(i+1,nclus)){
@@ -179,7 +179,7 @@ setMethod(
                            col = 'red2', pch = 16)
                 }
             }
-            
+
         }
         if(curves){
             for(ii in seq_along(slingCurves(x))[linInd]){
@@ -241,7 +241,7 @@ setMethod(
 #' @examples
 #' \dontrun{
 #' library(rgl)
-#' data("slingshotExample")
+#' data("slingshotExample", package="slingshot")
 #' rd <- slingshotExample$rd
 #' cl <- slingshotExample$cl
 #' rd <- cbind(rd, rnorm(nrow(rd)))
@@ -287,21 +287,21 @@ plot3d.SlingshotDataSet <- function(x,
             stop('Unrecognized type argument.')
         }
     }
-    
+
     if(type %in% c('lineages','both')){
         lineages <- TRUE
     }
     if(type %in% c('curves','both')){
         curves <- TRUE
     }
-    
+
     if(lineages & (length(slingLineages(x))==0)){
         stop('No lineages detected.')
     }
     if(curves & (length(slingCurves(x))==0)){
         stop('No curves detected.')
     }
-    
+
     if(is.null(linInd)){
         linInd <- seq_along(slingLineages(x))
     }else{
@@ -320,7 +320,7 @@ plot3d.SlingshotDataSet <- function(x,
             }
         }
     }
-    
+
     if(lineages){
         X <- reducedDim(x)
         clusterLabels <- slingClusterLabels(x)
@@ -337,7 +337,7 @@ plot3d.SlingshotDataSet <- function(x,
                                        drop = FALSE]
         clus2include <- unique(unlist(slingLineages(x)[linInd]))
     }
-    
+
     if(!add){
         xs <- NULL
         ys <- NULL
@@ -362,7 +362,7 @@ plot3d.SlingshotDataSet <- function(x,
                     ylab = colnames(reducedDim(x))[dims[2]],
                     zlab = colnames(reducedDim(x))[dims[3]])
     }
-    
+
     if(lineages){
         for(i in seq_len(nclus-1)){
             for(j in seq(i+1,nclus)){
