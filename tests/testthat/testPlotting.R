@@ -1,26 +1,29 @@
 data(crv, package = "traffic")
 data(counts, package = "traffic")
 data(sce, package = "traffic")
+sce@int_metadata$slingshot <- crv
 
 test_that("plotExpression works",{
-  expect_type(plotExpression(counts, crv, rownames(counts)[1]), "gg")
-  expect_is(plotExpression(counts, as.PseudotimeOrdering(crv), rownames(counts)[1]), "gg")
+  p <- plotExpression(counts, crv, rownames(counts)[1])
+  expect_true(is(p, "gg"))
+  p2 <- plotExpression(counts, as.PseudotimeOrdering(crv), rownames(counts)[1])
+  expect_true(is(p2, "gg"))
 })
 
 test_that("plotSmoothers works", {
-  expect_type(plotSmoothers(sce, gene = rownames(counts)[1], counts = counts), "gg")
+  expect_true(is(plotSmoothers(sce, gene = rownames(counts)[1], counts = counts), "gg"))
   # With all edge case options
-  expect_is(plotSmoothers(sdsFit, gene = 1, counts = counts(sdsFit), border = FALSE), "gg")
-  expect_is(plotSmoothers(sdsFit, gene = 1, counts = counts(sdsFit),
-                          pointCol = rep("black", ncol(sdsFit))), "gg")
-  sdsFit$color <- rep("black", ncol(sdsFit))
-  expect_is(plotSmoothers(sdsFit, gene = 1, counts = counts(sdsFit),
-                          pointCol = "color"), "gg")
-  expect_message(plotSmoothers(sdsFit, gene = 1, counts = counts(sdsFit),
+  expect_true(is(plotSmoothers(sce, gene = 1, counts = counts, border = FALSE), "gg"))
+  expect_true(is(plotSmoothers(sce, gene = 1, counts = counts,
+                          pointCol = rep("black", ncol(sce))), "gg"))
+  sce$color <- rep("black", ncol(sce))
+  expect_true(is(plotSmoothers(sce, gene = 1, counts = counts,
+                          pointCol = "color"), "gg"))
+  expect_error(plotSmoothers(sce, gene = 1, counts = counts,
                                pointCol = rep("black", 3)))
-  expect_is(plotSmoothers(sdsFit, gene = 1, counts = counts(sdsFit),
-                          curvesCol = rep("black", 2)), "gg")
-  expect_message(plotSmoothers(sdsFit, gene = 1, counts = counts(sdsFit),
+  expect_true(is(plotSmoothers(sce, gene = 1, counts = counts,
+                          curvesCols = rep("black", 2)), "gg"))
+  expect_error(plotSmoothers(sce, gene = 1, counts = counts,
                                curvesCol = rep("black", 4)))
 
 })
