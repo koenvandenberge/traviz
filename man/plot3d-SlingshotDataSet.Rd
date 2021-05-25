@@ -61,11 +61,12 @@ When \code{type} is not specified, the function will first check the
 \examples{
 \dontrun{
 library(rgl)
+library(slingshot)
 data("slingshotExample", package="slingshot")
 rd <- slingshotExample$rd
 cl <- slingshotExample$cl
 rd <- cbind(rd, rnorm(nrow(rd)))
-sds <- slingshot(rd, cl, start.clus = "1")
+sds <- slingshot::slingshot(rd, cl, start.clus = "1")
 plot3d(sds, type = 'b')
 
 # add to existing plot

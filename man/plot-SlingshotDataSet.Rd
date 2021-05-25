@@ -69,10 +69,11 @@ When \code{type} is not specified, the function will first check the
   \code{lineages} will be plotted, if present.
 }
 \examples{
+library(slingshot)
 data("slingshotExample", package="slingshot")
 rd <- slingshotExample$rd
 cl <- slingshotExample$cl
-sds <- slingshot(rd, cl, start.clus = "1")
+sds <- slingshot::slingshot(rd, cl, start.clus = "1")
 plot(sds, type = 'b')
 
 # add to existing plot
