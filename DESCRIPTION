@@ -16,7 +16,13 @@ Imports:
     viridis,
     mgcv,
     SingleCellExperiment,
-    slingshot
+    slingshot,
+    princurve,
+    Biobase,
+    methods,
+    monocle, 
+    RColorBrewer,
+    SummarizedExperiment
 RoxygenNote: 7.1.1
 Collate: 
     'AllGenerics.R'
