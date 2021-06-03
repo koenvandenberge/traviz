@@ -7,7 +7,7 @@ sce@int_metadata$slingshot <- crv
 test_that("plotExpression works",{
   p <- plotExpression(counts, crv, rownames(sce)[1])
   expect_true(is(p, "gg"))
-  p2 <- plotExpression(counts, as.PseudotimeOrdering(crv), rownames(counts)[1])
+  p2 <- plotExpression(counts, slingshot::as.PseudotimeOrdering(crv), rownames(counts)[1])
   expect_true(is(p2, "gg"))
 })
 

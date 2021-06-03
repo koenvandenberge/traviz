@@ -93,16 +93,8 @@
 #' @examples
 #' set.seed(97)
 #' library(slingshot)
-#' data(crv, package="tradeSeq")
-#' data(countMatrix, package="tradeSeq")
-#' rd <- slingshot::reducedDim(crv)
-#' cl <- kmeans(rd, centers = 7)$cluster
-#' lin <- slingshot::getLineages(rd, clusterLabels = cl, start.clus = 4)
-#' crv <- slingshot::getCurves(lin)
-#' counts <- as.matrix(countMatrix)
-#' gamList <- fitGAM(counts = counts,
-#'  pseudotime = slingPseudotime(crv, na = FALSE),
-#'  cellWeights = slingCurveWeights(crv))
+#' data(crv, package="traffic")
+#' data(counts, package="traffic")
 #' plotGeneCount(crv, counts, gene = "Mpo")
 #' @import RColorBrewer
 #' @import slingshot
