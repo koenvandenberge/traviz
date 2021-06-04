@@ -92,13 +92,12 @@ set.seed(8)
 library(ggplot2)
 data(crv, package="traffic")
 data(counts, package="traffic")
-data(sce, package="traffic)
+data(sce, package="traffic")
 plotSmoothers(sce, counts, rownames(counts)[1])
-
-## Show only first lineage curve
+# show only one curve
 curvesCols <- c("#440154FF", "transparent")
 plotSmoothers(sce, counts, rownames(counts)[1], curvesCols = curvesCols,
-             border = FALSE)
+border = FALSE)
 # Show only first curve and cells assigned to first lineage
 plotSmoothers(sce, counts, rownames(counts)[1], curvesCols = curvesCols,
   border = FALSE) +
