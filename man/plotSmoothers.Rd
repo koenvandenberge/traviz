@@ -89,12 +89,10 @@ Plot the smoothers estimated by \code{tradeSeq}.
 }
 \examples{
 set.seed(8)
-data(crv, package="tradeSeq")
-data(countMatrix, package="tradeSeq")
-counts <- as.matrix(countMatrix)
-sce <- fitGAM(counts = counts,
-                  sds = crv,
-                  nknots = 5)
+library(ggplot2)
+data(crv, package="traffic")
+data(counts, package="traffic")
+data(sce, package="traffic)
 plotSmoothers(sce, counts, rownames(counts)[1])
 # Show only first lineage curve
 curvesCols <- c("#440154FF", "transparent")
