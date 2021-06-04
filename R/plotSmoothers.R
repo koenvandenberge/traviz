@@ -363,7 +363,7 @@ setOldClass("gam")
 #' be plotted?
 #' @return A \code{\link{ggplot}} object
 #' @examples
-#' set.seed(8)
+#' set.seed(82)
 #' library(ggplot2)
 #' data(crv, package="traffic")
 #' data(counts, package="traffic")
