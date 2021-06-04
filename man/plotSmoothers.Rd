@@ -88,7 +88,7 @@ A \code{\link{ggplot}} object
 Plot the smoothers estimated by \code{tradeSeq}.
 }
 \examples{
-set.seed(8)
+set.seed(82)
 library(ggplot2)
 data(crv, package="traffic")
 data(counts, package="traffic")
