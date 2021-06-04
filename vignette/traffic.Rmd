@@ -1,0 +1,95 @@
+---
+title: 'Using traffic'
+author: "Koen Van den Berge, Hector Roux de Bézieux, Kelly Street"
+bibliography: traffic.bib
+date: "03/06/2021"
+output: 
+  rmarkdown::html_document:
+    toc: true
+    toc_depth: 3
+vignette: >
+  %\VignetteIndexEntry{traffic}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, echo = FALSE}
+library(knitr)
+```
+
+# Introduction
+
+The `traffic` package was created to collect visualization functions related to trajectory inference. Asides from general purpose functions useful to any user, it also contains visualizations that can be used in a `slingshot`, `tradeSeq` or `condiments` workflow.
+
+# Visualization of a trajectory
+
+First, we will demonstrate functions to visualize a trajectory. Here, we'll work with a trajectory as estimated by Slingshot [@Street2018]. An example trajectory is provided along with the `traffic` package.
+
+Below, we show how one can use the `lines` and `plot` functions for a `SlingshotDataSet` object. We also show how the `plotGeneCount` function can be used for a quick visualization of the trajectory.
+
+```{r}
+library(slingshot)
+library(traffic)
+data(crv, package = "traffic")
+class(crv)
+rd <- slingReducedDim(crv)
+cl <- apply(slingClusterLabels(crv),1, function(x) which(x==1))
+
+## Only visualize the trajectory
+plot(crv)
+
+## Visualize the trajectory on top of cells in reduced space
+plot(rd, pch=16, col=cl+1, cex=2/3)
+lines(crv, col="black", lwd=3)
+
+## Visualizing trajectory and clusters using plotGeneCount
+plotGeneCount(crv, clusters=cl)
+```
+
+### 3D visualization
+
+The same functions (i.e., `plot` and `lines`) can also be used to visualize trajectories in 3D space using the `rgl` package. This can be done using the `plot3d` and `lines3d` functions, in similar vein as the 2D visualizations above.
+
+# Visualization of gene expression along a trajectory
+
+## Visualizing gene expression along with the trajectory in reduced space
+
+The `plotGeneCount` also allows you to visualize the trajectory in reduced space, where
+each cell is colored according to its expression of the gene as defined by the `gene` argument.
+
+```{r}
+data(counts, package="traffic")
+plotGeneCount(crv, counts, gene = "Mpo")
+```
+
+## Visualizing gene expression along pseudotime
+
+The `plotExpression` function may be used to visualize gene expression along pseudotime along with a quick smooth estimate of average gene expression. It uses a loess smoother to smooth the raw gene expression values as a function of pseudotime. Note that no between-cell normalization occurs to do the smoothing.
+
+```{r}
+plotExpression(counts=counts,
+               sds=crv,
+               gene="Car1")
+```
+
+If smoothers have been fitted using `tradeSeq`, then one can use the `plotSmoothers` function to plot the estimated smoothers. Note that here normalization does happen within `tradeSeq`, and the smoothers are estimated using a negative binomial count model.
+
+```{r}
+data(sce, package="traffic")
+
+plotSmoothers(models = sce, counts = counts, gene = "Elane")
+```
+
+
+
+# Feedback and suggestions
+
+Any comment, question, or feedback is welcome and can be posted as an issue on the [traffic repo](https://github.com/koenvandenberge/traffic).
+
+# Session Info
+
+```{r}
+sessionInfo()
+```
+
+# References

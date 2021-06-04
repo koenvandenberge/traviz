@@ -33,7 +33,7 @@ setMethod(f = "plotExpression",
   }
 
   ### plot raw and smooth
-  ptAll <- pt[which(as.logical(cellAssign))]
+  ptAll <- pt[cbind(1:nrow(pt), apply(cellAssign,1,function(x) which(x==1)))]
   lineageID <- apply(cellAssign, 1, function(x) which(x==1))
   df <- data.frame(y=y,
                    pt=ptAll,
@@ -52,13 +52,23 @@ setMethod(f = "plotExpression",
                     data.frame(curX = ptGrid),
                     type = "response")
 
-    curDf <- data.frame(pt = ptGrid,
+    assign(paste0("curDf",ll), data.frame(pt = ptGrid,
                         y = yhat,
-                        lineage = factor(ll))
-    p1 <- p1 + geom_line(data = curDf,
-                   mapping = aes(x=pt, y=yhat, col=lineage),
-                   lwd = lwd+1)
+                        lineage = factor(ll)))
+
+    if(ll == 1){
+      allDf <- get(paste0("curDf",ll))
+    } else {
+      allDf <- rbind(allDf, get(paste0("curDf",ll)))
+    }
+
+    p1 <- p1 + geom_line(data = data.frame("ptAll" = ptGrid,
+                                           "y" = yhat,
+                                           "lineage" = factor(ll)),
+                         lwd = lwd+1)
   }
+
+
   return(p1)
 })
 
