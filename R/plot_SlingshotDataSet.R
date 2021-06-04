@@ -35,17 +35,16 @@
 #' @return returns \code{NULL}.
 #'
 #' @examples
-#' library(slingshot)
-#' data("slingshotExample", package="slingshot")
+#' data("slingshotExample")
 #' rd <- slingshotExample$rd
 #' cl <- slingshotExample$cl
-#' sds <- slingshot::slingshot(rd, cl, start.clus = "1")
-#' plot(sds, type = 'b')
+#' pto <- slingshot(rd, cl, start.clus = "1")
+#' plot(SlingshotDataSet(pto), type = 'b')
 #'
 #' # add to existing plot
-#' plot(rd, col = 'grey50')
+#' sds <- as.SlingshotDataSet(pto)
+#' plot(rd, col = 'grey50', asp = 1)
 #' lines(sds, lwd = 3)
-#'
 #' @import graphics
 #' @import grDevices
 #' @import slingshot
@@ -118,7 +117,7 @@ setMethod(
         if(lineages){
             X <- reducedDim(x)
             clusterLabels <- slingClusterLabels(x)
-            connectivity <- slingAdjacency(x)
+            connectivity <- slingshot::slingMST(x)
             clusters <- rownames(connectivity)
             nclus <- nrow(connectivity)
             centers <- t(vapply(clusters,function(clID){
@@ -326,7 +325,7 @@ plot3d.SlingshotDataSet <- function(x,
     if(lineages){
         X <- reducedDim(x)
         clusterLabels <- slingClusterLabels(x)
-        connectivity <- slingAdjacency(x)
+        connectivity <- slingshot::slingMST(x)
         clusters <- rownames(connectivity)
         nclus <- nrow(connectivity)
         centers <- t(vapply(clusters,function(clID){
