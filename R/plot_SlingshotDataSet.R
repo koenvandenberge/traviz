@@ -35,7 +35,7 @@
 #' @return returns \code{NULL}.
 #'
 #' @examples
-#' data("slingshotExample")
+#' data("slingshotExample", package="slingshot")
 #' rd <- slingshotExample$rd
 #' cl <- slingshotExample$cl
 #' pto <- slingshot(rd, cl, start.clus = "1")
