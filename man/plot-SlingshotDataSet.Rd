@@ -69,6 +69,7 @@ When \code{type} is not specified, the function will first check the
   \code{lineages} will be plotted, if present.
 }
 \examples{
+library(slingshot)
 data("slingshotExample", package="slingshot")
 rd <- slingshotExample$rd
 cl <- slingshotExample$cl
