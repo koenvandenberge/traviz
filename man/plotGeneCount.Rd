@@ -60,7 +60,7 @@ the \code{clusters} argument.}
 plot. Either \code{clusters} or \code{gene} and \code{counts} must be supplied.}
 
 \item{models}{The fitted GAMs, typically the output from
-\code{\link{fitGAM}}. Used to display the knots. Does not work with a
+\code{fitGAM}. Used to display the knots. Does not work with a
 \code{CellDataset} object as input.}
 
 \item{title}{Title for the plot.}

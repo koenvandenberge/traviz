@@ -1,7 +1,7 @@
 Package: traffic
 Type: Package
 Title: Trajectory functions for visualization and interpretation.
-Version: 0.1.17
+Version: 0.1.18
 Authors@R: c(
 	person("Hector", "Roux de Bezieux", role = c("aut", "ctb")),
 	person("Kelly", "Street", role = c("aut", "ctb")),
@@ -36,7 +36,9 @@ Suggests:
     scater,
     dplyr,
     testthat (>= 3.0.0),
-    covr
+    covr,
+    rgl,
+    S4Vectors
 Config/testthat/edition: 3
 Depends: 
     R (>= 2.10)

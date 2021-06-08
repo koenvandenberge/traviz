@@ -1,5 +1,28 @@
 #' @include utilsTradeSeq.R
 
+#' @title Plot gene expression as function of pseudotime.
+#' @description Plots a fast loess smoother of gene expression for each lineage.
+#' @param counts The matrix of gene expression counts.
+#' @param sds  A \code{SlingshotDataSet} or \code{PseudotimeOrdering} object,
+#' typically obtained after trajectory inference using \code{Slingshot}.
+#' @param gene Gene name of gene to plot.
+#' @param type The type of smoother. Defaults to \code{"loess"}.
+#' @param span If \code{type} is \code{"loess}, the \code{span} of the smoother.
+#' See \code{loess} documentation.
+#' @param lwd Line width of the smoother. Passed to \code{\link{geom_line}}.
+#' @param size Character expansion of the data points. Passed to \code{\link{geom_point}}.
+#' @param alpha Numeric between 0 and 1, determines the transparency of data points,
+#' see \code{scale_color_viridis_d}.
+#' @return A \code{\link{ggplot}} object
+#' @examples
+#' library(ggplot2)
+#' data(crv, package="traffic")
+#' data(counts, package="traffic")
+#' plotExpression(counts = counts, sds=crv, gene=rownames(counts)[1])
+#' @import ggplot2
+#' @import viridis
+#' @rdname plotExpression
+#' @export
 setMethod(f = "plotExpression",
           signature = c(counts = "matrix",
                         sds = "SlingshotDataSet",
@@ -73,6 +96,8 @@ setMethod(f = "plotExpression",
 })
 
 
+#' @rdname plotExpression
+#' @export
 setMethod(f = "plotExpression",
           signature = c(counts = "matrix",
                         sds = "PseudotimeOrdering",

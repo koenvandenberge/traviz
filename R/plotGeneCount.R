@@ -82,7 +82,7 @@
 #' @param clusters The assignation of each cell to a cluster. Used to color the
 #'  plot. Either \code{clusters} or \code{gene} and \code{counts} must be supplied.
 #' @param models The fitted GAMs, typically the output from
-#'  \code{\link{fitGAM}}. Used to display the knots. Does not work with a
+#'  \code{fitGAM}. Used to display the knots. Does not work with a
 #'  \code{CellDataset} object as input.
 #' @param title Title for the plot.
 #' @details If both \code{gene} and \code{clusters} arguments are supplied, the
