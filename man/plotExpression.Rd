@@ -42,7 +42,7 @@ typically obtained after trajectory inference using \code{Slingshot}.}
 
 \item{type}{The type of smoother. Defaults to \code{"loess"}.}
 
-\item{span}{If \code{type} is \code{"loess}, the \code{span} of the smoother.
+\item{span}{If \code{type} is \code{"loess"}, the \code{span} of the smoother.
 See \code{loess} documentation.}
 
 \item{alpha}{Numeric between 0 and 1, determines the transparency of data points,
@@ -53,7 +53,7 @@ see \code{scale_color_viridis_d}.}
 \item{size}{Character expansion of the data points. Passed to \code{\link{geom_point}}.}
 }
 \value{
-A \code{\link{ggplot}} object
+A \code{ggplot} object.
 }
 \description{
 Plot gene expression along pseudotime.

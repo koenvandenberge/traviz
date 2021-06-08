@@ -7,13 +7,13 @@
 #' typically obtained after trajectory inference using \code{Slingshot}.
 #' @param gene Gene name of gene to plot.
 #' @param type The type of smoother. Defaults to \code{"loess"}.
-#' @param span If \code{type} is \code{"loess}, the \code{span} of the smoother.
+#' @param span If \code{type} is \code{"loess"}, the \code{span} of the smoother.
 #' See \code{loess} documentation.
 #' @param lwd Line width of the smoother. Passed to \code{\link{geom_line}}.
 #' @param size Character expansion of the data points. Passed to \code{\link{geom_point}}.
 #' @param alpha Numeric between 0 and 1, determines the transparency of data points,
 #' see \code{scale_color_viridis_d}.
-#' @return A \code{\link{ggplot}} object
+#' @return A \code{ggplot} object.
 #' @examples
 #' library(ggplot2)
 #' data(crv, package="traffic")
