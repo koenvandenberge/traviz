@@ -59,7 +59,7 @@ When \code{type} is not specified, the function will first check the
   \code{lineages} will be plotted, if present.
 }
 \examples{
-\dontrun{
+\donttest{
 library(rgl)
 library(slingshot)
 data("slingshotExample", package="slingshot")
