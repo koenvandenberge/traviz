@@ -240,21 +240,19 @@ setMethod(
 #' @return returns \code{NULL}.
 #'
 #' @examples
-#' \donttest{
 #' library(rgl)
 #' library(slingshot)
-#' data("slingshotExample", package="slingshot")
-#' rd <- slingshotExample$rd
-#' cl <- slingshotExample$cl
-#' rd <- cbind(rd, rnorm(nrow(rd)))
-#' sds <- slingshot::slingshot(rd, cl, start.clus = "1")
-#' plot3d(sds, type = 'b')
+#' data("crv", package="traffic")
+#' rd <- slingReducedDim(crv)
+#' rd <- cbind(rd, rnorm(nrow(rd), sd=.1))
+#' cl <- apply(slingClusterLabels(crv), 1, which.max)
+#' sds <- slingshot::slingshot(rd, clusterLabels=cl, start.clus=1)
+#' slingshot::plot3d.SlingshotDataSet(as.SlingshotDataSet(sds), type = 'b')
 #'
 #' # add to existing plot
-#' plot3d(rd, col = 'grey50', aspect = 'iso')
-#' plot3d(sds, lwd = 3, add = TRUE)
-#' }
-#  @importFrom rgl plot3d
+#' plot3d(rd, col = cl, aspect = 'iso')
+#' slingshot::plot3d.SlingshotDataSet(as.SlingshotDataSet(sds), lwd = 3, add = TRUE)
+#' @importFrom rgl plot3d
 #' @import slingshot
 #' @export
 plot3d.SlingshotDataSet <- function(x,

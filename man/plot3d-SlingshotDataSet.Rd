@@ -5,7 +5,7 @@
 \alias{plot3d.SlingshotDataSet}
 \title{Plot Slingshot output in 3D}
 \usage{
-plot3d.SlingshotDataSet(
+\method{plot3d}{SlingshotDataSet}(
   x,
   type = NULL,
   linInd = NULL,
@@ -59,18 +59,16 @@ When \code{type} is not specified, the function will first check the
   \code{lineages} will be plotted, if present.
 }
 \examples{
-\donttest{
 library(rgl)
 library(slingshot)
-data("slingshotExample", package="slingshot")
-rd <- slingshotExample$rd
-cl <- slingshotExample$cl
-rd <- cbind(rd, rnorm(nrow(rd)))
-sds <- slingshot::slingshot(rd, cl, start.clus = "1")
-plot3d(sds, type = 'b')
+data("crv", package="traffic")
+rd <- slingReducedDim(crv)
+rd <- cbind(rd, rnorm(nrow(rd), sd=.1))
+cl <- apply(slingClusterLabels(crv), 1, which.max)
+sds <- slingshot::slingshot(rd, clusterLabels=cl, start.clus=1)
+slingshot::plot3d.SlingshotDataSet(as.SlingshotDataSet(sds), type = 'b')
 
 # add to existing plot
-plot3d(rd, col = 'grey50', aspect = 'iso')
-plot3d(sds, lwd = 3, add = TRUE)
-}
+plot3d(rd, col = cl, aspect = 'iso')
+slingshot::plot3d.SlingshotDataSet(as.SlingshotDataSet(sds), lwd = 3, add = TRUE)
 }
