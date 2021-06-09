@@ -59,6 +59,7 @@ When \code{type} is not specified, the function will first check the
   \code{lineages} will be plotted, if present.
 }
 \examples{
+\donttest{
 library(rgl)
 library(slingshot)
 data("crv", package="traffic")
@@ -71,4 +72,5 @@ slingshot::plot3d.SlingshotDataSet(as.SlingshotDataSet(sds), type = 'b')
 # add to existing plot
 plot3d(rd, col = cl, aspect = 'iso')
 slingshot::plot3d.SlingshotDataSet(as.SlingshotDataSet(sds), lwd = 3, add = TRUE)
+}
 }
