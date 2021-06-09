@@ -1,13 +1,14 @@
 Package: traffic
 Type: Package
 Title: Trajectory functions for visualization and interpretation.
-Version: 0.1.19
+Version: 0.1.20
 Authors@R: c(
 	person("Hector", "Roux de Bezieux", role = c("aut", "ctb")),
 	person("Kelly", "Street", role = c("aut", "ctb")),
 	person("Koen", "Van den Berge", role = c("aut" , "cre"), email = "koen.vandenberge@ugent.be"))
 Description: traffic provides a suite of functions to plot trajectory related objects from
-	     Bioconductor packages.
+	     Bioconductor packages. It allows plotting trajectories in reduced dimension,
+	     as well as averge gene expression smoothers as a function of pseudotime.
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
@@ -42,3 +43,12 @@ Suggests:
 Config/testthat/edition: 3
 Depends: 
     R (>= 2.10)
+biocViews:
+    GeneExpression,
+    RNASeq,
+    Sequencing,
+    Software,
+    SingleCell,
+    Transcriptomics,
+    Visualization,
+    TrajectoryInference

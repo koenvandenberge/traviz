@@ -240,7 +240,7 @@ setMethod(
 #' @return returns \code{NULL}.
 #'
 #' @examples
-#' \dontrun{
+#' \donttest{
 #' library(rgl)
 #' library(slingshot)
 #' data("slingshotExample", package="slingshot")
@@ -254,7 +254,7 @@ setMethod(
 #' plot3d(rd, col = 'grey50', aspect = 'iso')
 #' plot3d(sds, lwd = 3, add = TRUE)
 #' }
-# #' @importFrom rgl plot3d
+#  @importFrom rgl plot3d
 #' @import slingshot
 #' @export
 plot3d.SlingshotDataSet <- function(x,
