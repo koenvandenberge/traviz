@@ -240,6 +240,7 @@ setMethod(
 #' @return returns \code{NULL}.
 #'
 #' @examples
+#' \donttest{
 #' library(rgl)
 #' library(slingshot)
 #' data("crv", package="traffic")
@@ -252,6 +253,7 @@ setMethod(
 #' # add to existing plot
 #' plot3d(rd, col = cl, aspect = 'iso')
 #' slingshot::plot3d.SlingshotDataSet(as.SlingshotDataSet(sds), lwd = 3, add = TRUE)
+#' }
 #' @importFrom rgl plot3d
 #' @import slingshot
 #' @export
