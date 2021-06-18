@@ -243,7 +243,7 @@ setMethod(
 #' \donttest{
 #' library(rgl)
 #' library(slingshot)
-#' data("crv", package="traffic")
+#' data("crv", package="traviz")
 #' rd <- slingReducedDim(crv)
 #' rd <- cbind(rd, rnorm(nrow(rd), sd=.1))
 #' cl <- apply(slingClusterLabels(crv), 1, which.max)

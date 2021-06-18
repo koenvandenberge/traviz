@@ -1,7 +1,7 @@
 ---
 title: 'Using ggplot2 with slingshot'
 author: "Hector Roux de Bézieux and Kelly Street"
-bibliography: traffic.bib
+bibliography: traviz.bib
 date: "31/03/2021"
 output: 
   rmarkdown::html_document:
@@ -123,7 +123,7 @@ p + geom_point(data = mst, size = 4) +
   geom_path(data = mst %>% arrange(Order), aes(group = Lineage), size = 2)
 ```
 
-If you have trouble figuring out how to adapt this to other functions, feel free to open an issue on the [traffic repo](https://github.com/koenvandenberge/traffic).
+If you have trouble figuring out how to adapt this to other functions, feel free to open an issue on the [traviz repo](https://github.com/koenvandenberge/traviz).
 
 # Session Info
 

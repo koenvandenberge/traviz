@@ -16,8 +16,8 @@
 #' @return A \code{ggplot} object.
 #' @examples
 #' library(ggplot2)
-#' data(crv, package="traffic")
-#' data(counts, package="traffic")
+#' data(crv, package="traviz")
+#' data(counts, package="traviz")
 #' plotExpression(counts = counts, sds=crv, gene=rownames(counts)[1])
 #' @import ggplot2
 #' @import viridis

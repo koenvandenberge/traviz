@@ -8,7 +8,7 @@
 An object of class \code{SingleCellExperiment} with 240 rows and 2660 columns.
 }
 \usage{
-data("sce", package = "traffic")
+data("sce", package = "traviz")
 }
 \description{
 This object contains fitted smoothers using \code{tradeSeq}.

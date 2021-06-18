@@ -1,14 +1,14 @@
 ---
-title: 'Using traffic'
+title: 'Using traviz'
 author: "Koen Van den Berge, Hector Roux de Bézieux, Kelly Street"
-bibliography: traffic.bib
+bibliography: traviz.bib
 date: "03/06/2021"
 output: 
   rmarkdown::html_document:
     toc: true
     toc_depth: 3
 vignette: >
-  %\VignetteIndexEntry{traffic}
+  %\VignetteIndexEntry{traviz}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
@@ -19,18 +19,18 @@ library(knitr)
 
 # Introduction
 
-The `traffic` package was created to collect visualization functions related to trajectory inference. Asides from general purpose functions useful to any user, it also contains visualizations that can be used in a `slingshot`, `tradeSeq` or `condiments` workflow.
+The `traviz` package was created to collect visualization functions related to trajectory inference. Asides from general purpose functions useful to any user, it also contains visualizations that can be used in a `slingshot`, `tradeSeq` or `condiments` workflow.
 
 # Visualization of a trajectory
 
-First, we will demonstrate functions to visualize a trajectory. Here, we'll work with a trajectory as estimated by Slingshot [@Street2018]. An example trajectory is provided along with the `traffic` package.
+First, we will demonstrate functions to visualize a trajectory. Here, we'll work with a trajectory as estimated by Slingshot [@Street2018]. An example trajectory is provided along with the `traviz` package.
 
 Below, we show how one can use the `lines` and `plot` functions for a `SlingshotDataSet` object. We also show how the `plotGeneCount` function can be used for a quick visualization of the trajectory.
 
 ```{r}
 library(slingshot)
-library(traffic)
-data(crv, package = "traffic")
+library(traviz)
+data(crv, package = "traviz")
 class(crv)
 rd <- slingReducedDim(crv)
 cl <- apply(slingClusterLabels(crv),1, function(x) which(x==1))
@@ -58,7 +58,7 @@ The `plotGeneCount` also allows you to visualize the trajectory in reduced space
 each cell is colored according to its expression of the gene as defined by the `gene` argument.
 
 ```{r}
-data(counts, package="traffic")
+data(counts, package="traviz")
 plotGeneCount(crv, counts, gene = "Mpo")
 ```
 
@@ -75,7 +75,7 @@ plotExpression(counts=counts,
 If smoothers have been fitted using `tradeSeq`, then one can use the `plotSmoothers` function to plot the estimated smoothers. Note that here normalization does happen within `tradeSeq`, and the smoothers are estimated using a negative binomial count model.
 
 ```{r}
-data(sce, package="traffic")
+data(sce, package="traviz")
 
 plotSmoothers(models = sce, counts = counts, gene = "Elane")
 ```
@@ -84,7 +84,7 @@ plotSmoothers(models = sce, counts = counts, gene = "Elane")
 
 # Feedback and suggestions
 
-Any comment, question, or feedback is welcome and can be posted as an issue on the [traffic repo](https://github.com/koenvandenberge/traffic).
+Any comment, question, or feedback is welcome and can be posted as an issue on the [traviz repo](https://github.com/koenvandenberge/traviz).
 
 # Session Info
 

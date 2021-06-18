@@ -1,6 +1,6 @@
 library(slingshot)
-data("crv", package = "traffic")
-data("sce", package = "traffic")
+data("crv", package = "traviz")
+data("sce", package = "traviz")
 counts <- counts(sce)
 sce@int_metadata$slingshot <- crv
 

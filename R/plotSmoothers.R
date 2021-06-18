@@ -365,9 +365,9 @@ setOldClass("gam")
 #' @examples
 #' set.seed(82)
 #' library(ggplot2)
-#' data(crv, package="traffic")
-#' data(counts, package="traffic")
-#' data(sce, package="traffic")
+#' data(crv, package="traviz")
+#' data(counts, package="traviz")
+#' data(sce, package="traviz")
 #' plotSmoothers(sce, counts, rownames(counts)[1])
 #' # show only one curve
 #' curvesCols <- c("#440154FF", "transparent")

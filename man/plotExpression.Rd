@@ -62,7 +62,7 @@ Plots a fast loess smoother of gene expression for each lineage.
 }
 \examples{
 library(ggplot2)
-data(crv, package="traffic")
-data(counts, package="traffic")
+data(crv, package="traviz")
+data(counts, package="traviz")
 plotExpression(counts = counts, sds=crv, gene=rownames(counts)[1])
 }

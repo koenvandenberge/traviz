@@ -1,4 +1,4 @@
 library(testthat)
-library(traffic)
+library(traviz)
 
-test_check("traffic")
+test_check("traviz")

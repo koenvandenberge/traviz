@@ -93,8 +93,8 @@
 #' @examples
 #' set.seed(97)
 #' library(slingshot)
-#' data(crv, package="traffic")
-#' data(counts, package="traffic")
+#' data(crv, package="traviz")
+#' data(counts, package="traviz")
 #' plotGeneCount(crv, counts, gene = "Mpo")
 #' @import RColorBrewer
 #' @import slingshot

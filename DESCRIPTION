@@ -1,16 +1,16 @@
-Package: traffic
+Package: traviz
 Type: Package
 Title: Trajectory functions for visualization and interpretation.
-Version: 0.1.28
+Version: 0.1.29
 Authors@R: c(
 	person("Hector", "Roux de Bezieux", role = c("aut", "ctb")),
 	person("Kelly", "Street", role = c("aut", "ctb")),
 	person("Koen", "Van den Berge", role = c("aut" , "cre"), email = "koen.vandenberge@ugent.be"))
 Description: 
-  traffic provides a suite of functions to plot trajectory related objects from
+  traviz provides a suite of functions to plot trajectory related objects from
 	Bioconductor packages. It allows plotting trajectories in reduced dimension,
 	as well as averge gene expression smoothers as a function of pseudotime.
-	Asides from general utility functions, traffic also allows plotting trajectories
+	Asides from general utility functions, traviz also allows plotting trajectories
 	estimated by Slingshot, as well as smoothers estimated by tradeSeq.
 	Furthermore, it allows for visualization of Slingshot trajectories using ggplot2.
 License: MIT + file LICENSE
