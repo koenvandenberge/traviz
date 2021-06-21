@@ -1,7 +1,7 @@
 Package: traviz
 Type: Package
 Title: Trajectory functions for visualization and interpretation.
-Version: 0.1.29
+Version: 0.1.30
 Authors@R: c(
 	person("Hector", "Roux de Bezieux", role = c("aut", "ctb")),
 	person("Kelly", "Street", role = c("aut", "ctb")),
@@ -15,7 +15,7 @@ Description:
 	Furthermore, it allows for visualization of Slingshot trajectories using ggplot2.
 License: MIT + file LICENSE
 Encoding: UTF-8
-LazyData: true
+LazyData: false
 Imports: 
     ggplot2,
     viridis,

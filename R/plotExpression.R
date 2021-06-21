@@ -49,14 +49,14 @@ setMethod(f = "plotExpression",
   ### estimate loess for each lineage
   y <- counts[gene,]
   smooth <- list()
-  for(ll in 1:ncol(cw)){
+  for(ll in seq_len(ncol(cw))){
     curY <- y[cw[,ll] == 1]
     curX <- pt[cw[,ll] == 1,ll]
     smooth[[ll]] <- loess(curY ~ curX)
   }
 
   ### plot raw and smooth
-  ptAll <- pt[cbind(1:nrow(pt), apply(cellAssign,1,function(x) which(x==1)))]
+  ptAll <- pt[cbind(seq_len(nrow(pt)), apply(cellAssign,1,function(x) which(x==1)))]
   lineageID <- apply(cellAssign, 1, function(x) which(x==1))
   df <- data.frame(y=y,
                    pt=ptAll,
@@ -68,7 +68,7 @@ setMethod(f = "plotExpression",
     xlab("Pseudotime") +
     ylab("Expression")
 
-  for(ll in 1:ncol(cw)){
+  for(ll in seq_len(ncol(cw))){
     ptGrid <- seq(0, max(pt[lineageID == ll,ll]),
                   length.out = 100)
     yhat <- predict(smooth[[ll]],
