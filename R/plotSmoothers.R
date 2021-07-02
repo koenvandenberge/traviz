@@ -380,6 +380,7 @@ setOldClass("gam")
 #' @import ggplot2
 #' @import mgcv
 #' @import viridis
+#' @import Biobase
 #' @importFrom methods is
 #' @rdname plotSmoothers
 #' @export
