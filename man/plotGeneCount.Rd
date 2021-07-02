@@ -27,13 +27,12 @@ plotGeneCount(curve, ...)
 )
 }
 \arguments{
-\item{curve}{One of three
+\item{curve}{One of two
 \itemize{
   \item A \code{\link{SlingshotDataSet}} object. The output from trajectory inference
 using Slingshot.
  \item A \code{\link{SingleCellExperiment}} object. The output from trajectory inference
 using Slingshot.
-\item A \code{CellDataset} object.
 }}
 
 \item{...}{parameters including:}
@@ -50,8 +49,7 @@ the \code{clusters} argument.}
 plot. Either \code{clusters} or \code{gene} and \code{counts} must be supplied.}
 
 \item{models}{The fitted GAMs, typically the output from
-\code{fitGAM}. Used to display the knots. Does not work with a
-\code{CellDataset} object as input.}
+\code{fitGAM}. Used to display the knots.}
 
 \item{title}{Title for the plot.}
 }
@@ -64,8 +62,7 @@ Plot the gene in reduced dimensional space.
 \details{
 If both \code{gene} and \code{clusters} arguments are supplied, the
  plot will be colored according to gene count level. If none are provided, the
- function will fail. When a \code{CellDataset} object is provided as input,
- the function relies on the \code{\link{plot_cell_trajectory}} function
+ function will fail.
 }
 \examples{
 set.seed(97)

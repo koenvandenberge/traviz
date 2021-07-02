@@ -1,7 +1,7 @@
 Package: traviz
 Type: Package
 Title: Trajectory functions for visualization and interpretation.
-Version: 0.99.02
+Version: 0.99.03
 Authors@R: c(
 	person("Hector", "Roux de Bezieux", role = c("aut", "ctb")),
 	person("Kelly", "Street", role = c("aut", "ctb")),
