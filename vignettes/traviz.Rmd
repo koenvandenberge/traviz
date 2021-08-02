@@ -23,7 +23,7 @@ The `traviz` package was created to collect visualization functions related to t
 
 # Visualization of a trajectory
 
-First, we will demonstrate functions to visualize a trajectory. Here, we'll work with a trajectory as estimated by Slingshot [@Street2018]. An example trajectory is provided along with the `traviz` package.
+First, we will demonstrate functions to visualize a trajectory. Here, we'll work with a trajectory as estimated by Slingshot [@Street2018a]. An example trajectory is provided along with the `traviz` package.
 
 Below, we show how one can use the `lines` and `plot` functions for a `SlingshotDataSet` object. We also show how the `plotGeneCount` function can be used for a quick visualization of the trajectory.
 
