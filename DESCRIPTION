@@ -1,7 +1,7 @@
 Package: traviz
 Type: Package
 Title: Trajectory functions for visualization and interpretation.
-Version: 0.99.07
+Version: 0.99.08
 Authors@R: c(
 	person("Hector", "Roux de Bezieux", role = c("aut", "ctb")),
 	person("Kelly", "Street", role = c("aut", "ctb")),
@@ -46,7 +46,8 @@ Suggests:
     covr,
     S4Vectors,
     rmarkdown,
-    knitr
+    knitr,
+    DelayedMatrixStats
 Config/testthat/edition: 3
 Depends: 
     R (>= 4.0)
